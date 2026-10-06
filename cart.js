@@ -1,4 +1,4 @@
-// Cycle 4 (green): discount coupon.
+// Cycle 5 (green): GST, applied after the discount, rounded to 2 decimals.
 function calculateTotal(items, options = {}) {
   let total = 0;
   for (const item of items) {
@@ -7,7 +7,10 @@ function calculateTotal(items, options = {}) {
   if (options.coupon === 'SAVE10') {
     total = total * 0.9;
   }
-  return total;
+  if (options.gst) {
+    total = total * 1.18;
+  }
+  return Math.round(total * 100) / 100;
 }
 
 module.exports = { calculateTotal };
