@@ -1,6 +1,10 @@
-// Cycle 1 (green): the simplest thing that passes.
+// Cycle 2 (green): sum the prices.
 function calculateTotal(items) {
-  return 0;
+  let total = 0;
+  for (const item of items) {
+    total += item.price;
+  }
+  return total;
 }
 
 module.exports = { calculateTotal };
