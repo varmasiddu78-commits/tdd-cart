@@ -27,3 +27,15 @@ test('coupon SAVE10 gives 10% off', () => {
 test('an unknown coupon is ignored', () => {
   expect(calculateTotal([{ price: 100 }], { coupon: 'FAKE99' })).toBe(100);
 });
+
+test('18% GST is added on top: 100 -> 118', () => {
+  expect(calculateTotal([{ price: 100 }], { gst: true })).toBe(118);
+});
+
+test('discount is applied first, then GST: 100 -> 90 -> 106.2', () => {
+  expect(calculateTotal([{ price: 100 }], { coupon: 'SAVE10', gst: true })).toBe(106.2);
+});
+
+test('result is rounded to 2 decimals', () => {
+  expect(calculateTotal([{ price: 99.99 }], { gst: true })).toBe(117.99);
+});
