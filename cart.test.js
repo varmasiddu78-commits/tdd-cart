@@ -39,3 +39,19 @@ test('discount is applied first, then GST: 100 -> 90 -> 106.2', () => {
 test('result is rounded to 2 decimals', () => {
   expect(calculateTotal([{ price: 99.99 }], { gst: true })).toBe(117.99);
 });
+
+test('negative quantity throws an error', () => {
+  expect(() => calculateTotal([{ price: 50, qty: -1 }])).toThrow('Quantity must be a positive whole number');
+});
+
+test('zero quantity throws an error', () => {
+  expect(() => calculateTotal([{ price: 50, qty: 0 }])).toThrow('Quantity must be a positive whole number');
+});
+
+test('fractional quantity throws an error', () => {
+  expect(() => calculateTotal([{ price: 50, qty: 1.5 }])).toThrow('Quantity must be a positive whole number');
+});
+
+test('negative price throws an error', () => {
+  expect(() => calculateTotal([{ price: -10 }])).toThrow('Price cannot be negative');
+});
