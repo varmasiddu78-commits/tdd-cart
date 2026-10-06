@@ -1,0 +1,21 @@
+{
+  "name": "tdd-cart",
+  "version": "1.0.0",
+  "description": "TDD kata: shopping cart price calculator (Red -> Green -> Refactor)",
+  "main": "cart.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+  "testEnvironment": "node",
+  "testPathIgnorePatterns": ["/node_modules/", "/stages/", "/final/"],
+  "collectCoverageFrom": ["cart.js"],
+  "coverageThreshold": {
+    "global": { "branches": 90, "functions": 100, "lines": 90, "statements": 90 }
+  }
+},
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
